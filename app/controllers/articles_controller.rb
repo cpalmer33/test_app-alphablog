@@ -56,7 +56,7 @@ def article_params
 end
 
 def require_same_user
-  if current_user != @article.user
+  if current_user != @article.user and !current_user.admin?
     flash[:danger] = "You can only edit or delete your own article"
     redirect_to '/'
   end
